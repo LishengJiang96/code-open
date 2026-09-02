@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""论文 6.2 讨论：无差异/偏好阈值比（Q_I/(2*mean)、Q_P/(2*mean)），供四象限分析。"""
+"""Section 6.2 discussion: indifference and preference threshold ratios (Q_I/(2*mean), Q_P/(2*mean)) for the quadrant analysis."""
 
 import os
 import sys
@@ -26,7 +26,7 @@ def main():
     x = df[CRITERIA].to_numpy()
     rng = np.random.default_rng(SEED)
 
-    print('准则           Q_I/(2*mean)   Q_P/(2*mean)')
+    print('Criterion           Q_I/(2*mean)   Q_P/(2*mean)')
     for j in range(15):
         taus, _ = bootstrap_thresholds(x[:, j], 0.1, 0.9, 0.95, rng)
         m = x[:, j].mean()

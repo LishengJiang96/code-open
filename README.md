@@ -1,33 +1,33 @@
-# ELECTRE-T2B 代码
+# ELECTRE-T2B Code
 
-论文《An improved ELECTRE~III method integrating bootstrap-based thresholds and Bonferroni mean for urban sustainability assessment》的计算代码。
+Computational code for the paper "An improved elimination and choice translating reality method integrating bootstrap-based thresholds and Bonferroni mean for urban sustainability assessment".
 
-## 依赖
+## Dependencies
 
 - Python 3.9+
 - numpy, pandas, scipy
 
-## 结构
+## Structure
 
 ```
-chapter3/   方法实现与示例
-  electre_t2b.py        核心计算（阈值、权重、一致度、可信度、综合指数）
-  example_threshold.py  示例 1：阈值与权重
-  example_bm.py         示例 2：交互参数
-chapter4/   模拟验证
-  threshold_robustness.py  4.1 阈值估计稳健性（4050 组合，B=5000，1000 次重复）
-  rank_reversal.py         4.2 秩反转（972 组合，1000 次重复）
-chapter5/   案例
-  case_study.py     表 4、表 7
-  sensitivity.py    表 8
-  comparative.py    表 9
-chapter6/   讨论
-  threshold_analysis.py  6.2 阈值比
-data/       案例数据 data_sc.xlsx
+chapter3/   Method implementation and examples
+  electre_t2b.py        core computations (thresholds, weights, concordance, credibility, comprehensive index)
+  example_threshold.py  Example 1: thresholds and weights
+  example_bm.py         Example 2: interaction parameters
+chapter4/   Simulation validation
+  threshold_robustness.py  Section 4.1 threshold estimation robustness (4050 combinations, B=5000, 1000 replications)
+  rank_reversal.py         Section 4.2 rank reversal (972 combinations, 1000 replications)
+chapter5/   Case study
+  case_study.py   Tables 4 and 7
+  sensitivity.py  Table 8
+  comparative.py  Table 9
+chapter6/   Discussion
+  threshold_analysis.py  Section 6.2 threshold ratios
+data/       case data data_sc.xlsx
 ```
 
-## 运行
+## Run
 
-在对应目录执行，如 `python chapter5/case_study.py`。
+Run from the corresponding directory, e.g., `python chapter5/case_study.py`.
 
-第 4 章模拟计算量大（4050/972 组合 × 1000 次重复），需较长时间；全部随机数使用固定种子 SEED=2026，结果可复现。
+The simulations in Chapter 4 are computationally heavy (4050/972 combinations times 1000 replications) and take a long time. All random numbers use the fixed seed SEED=2026, so the results are reproducible.

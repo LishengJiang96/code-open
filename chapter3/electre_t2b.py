@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""ELECTRE-T2B 核心计算（论文第 3 章）。"""
+"""Core computations of ELECTRE-T2B (Section 3 of the paper)."""
 
 import numpy as np
 
@@ -17,7 +17,7 @@ def rankings(x):
 
 
 def bootstrap_thresholds(col, qI, qP, qV, rng, B=B_BOOT):
-    """剔 0 的 bootstrap 阈值估计，返回 (tau_I, tau_P, tau_V, cv)。"""
+    """Bootstrap threshold estimation on non-zero differences, returning (tau_I, tau_P, tau_V, cv)."""
     n = col.size
     ii, jj = np.triu_indices(n, 1)
     idx = rng.integers(0, n, size=(B, n))
@@ -119,7 +119,7 @@ def comprehensive_index(c):
 
 
 def electre_t2b(x, ctype, qI, qP, qV, eta1=1.0, eta2=1.0, rng=None):
-    """完整流程：阈值、权重、一致度、可信度、综合指数。"""
+    """Full pipeline: thresholds, weights, concordance, credibility, comprehensive index."""
     if rng is None:
         rng = np.random.default_rng(SEED)
     taus = np.zeros((x.shape[1], 3))

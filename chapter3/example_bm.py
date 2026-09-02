@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""论文 Example 2：加权 Bonferroni 均值的交互参数示例（第 3 章）。"""
+"""Example 2 in the paper: interaction parameters of the weighted Bonferroni mean (Section 3)."""
 
 import numpy as np
 

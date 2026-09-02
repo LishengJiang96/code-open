@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""论文第 5 章案例：表 4（阈值、综合变异系数、权重）与表 7（贴进度、综合指数、排名）。"""
+"""Case study in Chapter 5: Table 4 (thresholds, comprehensive variation coefficients, weights) and Table 7 (closeness indices, comprehensive indices, ranks)."""
 
 import os
 import sys
@@ -43,7 +43,7 @@ def main():
             x[:, j], Q_I, Q_P, Q_V, rng)
     lam, w = weights_from_cvs(cvs)
 
-    print('表 4：阈值、综合变异系数、权重')
+    print('Table 4: thresholds, comprehensive variation coefficients, weights')
     for j in range(15):
         print(f'{CRITERIA[j]:38s} '
               f'Q_I={taus[j, 0]:9.4f} Q_P={taus[j, 1]:9.4f} '
@@ -55,7 +55,7 @@ def main():
     c = credibility(D_con, d_dis)
     close, score, rank = comprehensive_index(c)
 
-    print('\n表 7：贴进度、综合指数、排名')
+    print('\nTable 7: closeness indices, comprehensive indices, ranks')
     for i in range(18):
         print(f'{CITIES[i]:12s} rho+={c.mean(axis=1)[i]:6.3f} '
               f'rho-={c.mean(axis=0)[i]:6.3f} psi={close[i]:7.3f} '

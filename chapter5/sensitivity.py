@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""论文 5.4 敏感分析：表 8（交互参数 9 组、分位数 8 组下的 CI 与排名标准差）。"""
+"""Section 5.4 sensitivity analysis: Table 8 (standard deviations of CI and ranks under 9 interaction parameter sets and 8 quantile sets)."""
 
 import os
 import sys
@@ -58,7 +58,7 @@ def main():
         eta_ci[:, gi] = score
         eta_rk[:, gi] = rank
 
-    print('表 8：CI 与排名的标准差')
+    print('Table 8: standard deviations of CI and ranks')
     for i in range(18):
         print(f'{CITIES[i]:12s} eta_CI={eta_ci.std(axis=1)[i]:6.3f} '
               f'eta_Rank={eta_rk.std(axis=1)[i]:6.3f} '

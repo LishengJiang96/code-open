@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""论文 4.2：秩反转模拟。
-比较 ELECTRE-T2B 与 ELECTRE-III 在删除方案后的反转概率与反转比例。
-972 参数组合，每组合 1000 次重复。
+"""Section 4.2: rank reversal simulation.
+Compares the reversal probability and ratio of ELECTRE-T2B with those of ELECTRE-III after removing an alternative.
+972 parameter combinations with 1000 replications each.
 """
 
 import itertools as its
@@ -40,7 +40,7 @@ def gen_beta(noa, noc, mode, rng):
 
 
 def electre_iii(x, w, qI, qP, qV, ctype):
-    """原版 ELECTRE III：阈值取非零差集分位数，蒸馏排序。"""
+    """Original ELECTRE III: thresholds as quantiles of the non-zero differences, distillation ranking."""
     noc = x.shape[1]
     t_ind = np.zeros(noc)
     t_pre = np.zeros(noc)
@@ -180,7 +180,7 @@ def reversal_ratio_iii(m1, m2):
 def main():
     rng = np.random.default_rng(SEED)
     combos = list(its.product(NOA, NOC, Q_I, Q_P, Q_V, MODES, ETA))
-    print(f'组合数: {len(combos)}')
+    print(f'Combinations: {len(combos)}')
 
     t2b_prob = []
     t2b_ratio = []
@@ -192,7 +192,7 @@ def main():
         p2 = r2 = p3 = r3 = 0.0
         for _ in range(REPS):
             x = gen_beta(noa, noc, mode, rng)
-            # T2B 初始
+            # Initial T2B
             taus = np.zeros((noc, 3))
             cvs = np.zeros((noc, 3))
             for j in range(noc):
@@ -204,14 +204,14 @@ def main():
             d_dis = discordance(x, taus[:, 1], taus[:, 2], ctype)
             c = credibility(D_con, d_dis)
             _, s1, rank1 = comprehensive_index(c)
-            # III 初始
+            # Initial ELECTRE III
             m1 = electre_iii(x, w, qI, qP, qV, ctype)
-            # 删除一个方案
+            # Remove one alternative
             k = rng.integers(noa)
             keep = np.ones(noa, bool)
             keep[k] = False
             xd = x[keep]
-            # T2B 重算
+            # Recompute T2B
             taus2 = np.zeros((noc, 3))
             cvs2 = np.zeros((noc, 3))
             for j in range(noc):
@@ -223,7 +223,7 @@ def main():
             d_dis2 = discordance(xd, taus2[:, 1], taus2[:, 2], ctype)
             c2 = credibility(D_con2, d_dis2)
             _, s2, rank2 = comprehensive_index(c2)
-            # III 重算
+            # Recompute ELECTRE III
             m2 = electre_iii(xd, w2, qI, qP, qV, ctype)
 
             n_pairs = noa * (noa - 1)

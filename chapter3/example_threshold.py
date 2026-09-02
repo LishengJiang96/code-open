@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""论文 Example 1：单准则阈值与权重示例（第 3 章）。"""
+"""Example 1 in the paper: thresholds and weights for a single criterion (Section 3)."""
 
 import numpy as np
 

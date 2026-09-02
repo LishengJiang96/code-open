@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""论文 4.1：阈值估计稳健性模拟。
-单准则，4050 参数组合，比较三种阈值估计方法在缺失数据下的相对偏差。
+"""Section 4.1: robustness simulation of threshold estimation.
+Single criterion, 4050 parameter combinations, comparing the relative deviations of three methods under missing data.
 """
 
 import itertools as its
@@ -18,7 +18,7 @@ SEED = 2026
 
 
 def gen_evaluations(n, rho, marginal, rng):
-    """Gaussian copula 生成 n 个方案的评价（单准则）。"""
+    """Generate the evaluations of n alternatives from the Gaussian copula (single criterion)."""
     from scipy.stats import norm
     cov = np.fromfunction(lambda i, j: rho ** np.abs(i - j), (n, n))
     z = rng.multivariate_normal(np.zeros(n), cov)
@@ -80,7 +80,7 @@ def main():
     results = {'maxdiff': [], 'quantile': [], 'bootstrap': []}
     combos = list(its.product(NOA, QUANTILES, QUANTILES, DEL_RATIO,
                               DEL_PATTERN, RHO, MARGINALS))
-    print(f'组合数: {len(combos)}')
+    print(f'Combinations: {len(combos)}')
 
     for noa, q, pmax, ratio, pattern, rho, marginal in combos:
         devs = {'maxdiff': [], 'quantile': [], 'bootstrap': []}

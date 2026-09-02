@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""论文 5.5 对比分析：表 9（SWM、TOPSIS、PROMETHEE 四个变体）与 Spearman 检验。"""
+"""Section 5.5 comparative analysis: Table 9 (SWM, TOPSIS, four PROMETHEE variants) and Spearman tests."""
 
 import os
 import sys
@@ -93,14 +93,14 @@ def main():
     for f in ['U', 'Q', 'LP', 'L']:
         scores[f'PROMETHEE_{f}'] = promethee(xs, w, f)
 
-    print('表 9：综合指数与排名')
+    print('Table 9: comprehensive indices and ranks')
     for i in range(18):
         line = f'{CITIES[i]:12s} T2B={score_t2b[i]:6.3f}'
         for m in methods:
             line += f' {m}={scores[m][i]:8.4f}'
         print(line)
 
-    print('\nSpearman 相关（与 T2B 排名）：')
+    print('\nSpearman correlation (with T2B ranks):')
     for m in methods:
         rho, p = spearmanr(rank_t2b, rankings(scores[m]))
         print(f'  {m:12s} rho={rho:.4f} p={p:.4g}')
